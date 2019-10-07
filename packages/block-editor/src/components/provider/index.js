@@ -28,6 +28,9 @@ class BlockEditorProvider extends Component {
 			updateSettings,
 			value,
 			resetBlocks,
+			selectionStart,
+			selectionEnd,
+			resetSelection,
 			registry,
 		} = this.props;
 
@@ -55,6 +58,10 @@ class BlockEditorProvider extends Component {
 			this.isSyncingOutcomingValue = null;
 			this.isSyncingIncomingValue = value;
 			resetBlocks( value );
+
+			if ( selectionStart && selectionEnd ) {
+				resetSelection( selectionStart, selectionEnd );
+			}
 		}
 	}
 
@@ -83,6 +90,8 @@ class BlockEditorProvider extends Component {
 
 		const {
 			getBlocks,
+			getSelectionStart,
+			getSelectionEnd,
 			isLastBlockChangePersistent,
 			__unstableIsLastBlockChangeIgnored,
 		} = registry.select( 'core/block-editor' );
@@ -125,10 +134,13 @@ class BlockEditorProvider extends Component {
 				blocks = newBlocks;
 				isPersistent = newIsPersistent;
 
+				const selectionStart = getSelectionStart();
+				const selectionEnd = getSelectionEnd();
+
 				if ( isPersistent ) {
-					onChange( blocks );
+					onChange( blocks, { selectionStart, selectionEnd } );
 				} else {
-					onInput( blocks );
+					onInput( blocks, { selectionStart, selectionEnd } );
 				}
 			}
 		} );
@@ -147,11 +159,13 @@ export default compose( [
 		const {
 			updateSettings,
 			resetBlocks,
+			resetSelection,
 		} = dispatch( 'core/block-editor' );
 
 		return {
 			updateSettings,
 			resetBlocks,
+			resetSelection,
 		};
 	} ),
 ] )( BlockEditorProvider );
