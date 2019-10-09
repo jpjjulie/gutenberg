@@ -26,6 +26,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import useBlockNavigator from './use-block-navigator';
+import BlockColorsStyleSelector from './block-colors-selector';
 
 function NavigationMenu( {
 	attributes,
@@ -55,6 +56,7 @@ function NavigationMenu( {
 				<Toolbar>
 					{ navigatorToolbarButton }
 				</Toolbar>
+				<BlockColorsStyleSelector />
 			</BlockControls>
 			{ navigatorModal }
 			<InspectorControls>
