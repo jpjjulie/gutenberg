@@ -13,7 +13,7 @@ import { ColorPaletteControl } from '@wordpress/block-editor';
  */
 const ColorSelectorIcon = () =>
 	<div className="block-editor-block-colors-selector__icon-container">
-		<div className="colors-selector__state-selection">
+		<div className="colors-selector__state-selection wp-block-navigation-menu-item">
 			{ __( 'Aa' ) }
 		</div>
 	</div>;

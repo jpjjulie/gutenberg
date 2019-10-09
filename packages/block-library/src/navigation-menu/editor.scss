@@ -45,9 +45,10 @@ $colors-selector-size: 20px;
 			// colors-selector - selection status.
 			.colors-selector__state-selection {
 				box-shadow: 0 0 1px #000 inset;
-				background-color: #f00;
-				color: #fff;
-				font-size: 10px;
+				font-size: 11px;
+				font-style: normal;
+				font-family: inherit;
+				font-weight: 600;
 
 				border-radius: $colors-selector-size / 2;
 				width: $colors-selector-size;
