@@ -9,6 +9,7 @@ import {
 	InnerBlocks,
 	InspectorControls,
 	BlockControls,
+	withColors,
 } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import {
@@ -17,6 +18,8 @@ import {
 	Spinner,
 	Toolbar,
 } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -83,17 +86,22 @@ function NavigationMenu( {
 	);
 }
 
-export default withSelect( ( select ) => {
-	const { getEntityRecords } = select( 'core' );
-	const { isResolving } = select( 'core/data' );
-	const filterDefaultPages = {
-		parent: 0,
-		order: 'asc',
-		orderby: 'id',
-	};
-	return {
-		pages: getEntityRecords( 'postType', 'page', filterDefaultPages ),
-		isRequesting: isResolving( 'core', 'getEntityRecords', [ 'postType', 'page', filterDefaultPages ] ),
-	};
-} )( NavigationMenu );
+export default compose( [
+	withColors( { backgroundColor: 'background-color', textColor: 'color' } ),
+	withSelect( ( select ) => {
+		const { getEntityRecords } = select( 'core' );
+		const { isResolving } = select( 'core/data' );
+		const filterDefaultPages = {
+			parent: 0,
+			order: 'asc',
+			orderby: 'id',
+		};
+		return {
+			pages: getEntityRecords( 'postType', 'page', filterDefaultPages ),
+			isRequesting: isResolving( 'core', 'getEntityRecords', [ 'postType', 'page', filterDefaultPages ] ),
+		};
+	} ),
+] )( NavigationMenu );
+
+
 
