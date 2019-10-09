@@ -47,32 +47,33 @@ const renderToggle = ( { onToggle, isOpen } ) => {
 	);
 };
 
-const renderContent = () => (
-	<>
-		<div className="color-palette-controller-container">
-			<ColorPaletteControl
-				value="#aaa"
-				onChange= { console.log }
-				label={ __( 'Background Color' ) }
-			/>
-		</div>
+const renderContent = ( { backgroundColor, textColor, setBackgroundColor, setTextColor } ) => ( ( { isOpen, onToggle, onClose } ) => {
+	return (
+		<>
+			<div className="color-palette-controller-container">
+				<ColorPaletteControl
+					value={ backgroundColor.color }
+					onChange={ setBackgroundColor }
+					label={ __( 'Background Color' ) }
+				/>
+			</div>
 
-		<div className="color-palette-controller-container">
-			<ColorPaletteControl
-				value="#aaa"
-				onChange= { console.log }
-				label={ __( 'Text Color' ) }
-			/>
-		</div>
-	</>
-);
+			<div className="color-palette-controller-container">
+				<ColorPaletteControl
+					value={ textColor.color }
+					onChange= { setTextColor }
+					label={ __( 'Text Color' ) }
+				/>
+			</div>
+		</>
+	)
+} );
 
-export default () =>
+export default ( colorControlProps ) =>
 	<Dropdown
 		position="bottom right"
 		className="editor-block-colors-selector block-editor-block-colors-selector"
 		contentClassName="editor-block-colors-selector__popover block-editor-block-colors-selector__popover"
 		renderToggle={ renderToggle }
-		renderContent={ renderContent }
+		renderContent={ renderContent( colorControlProps ) }
 	/>;
-

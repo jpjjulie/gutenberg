@@ -34,6 +34,10 @@ function NavigationMenu( {
 	clientId,
 	pages,
 	isRequesting,
+	backgroundColor,
+	textColor,
+	setBackgroundColor,
+	setTextColor,
 } ) {
 	const { navigatorToolbarButton, navigatorModal } = useBlockNavigator( clientId );
 	const defaultMenuItems = useMemo(
@@ -50,13 +54,20 @@ function NavigationMenu( {
 		[ pages ]
 	);
 
+	const colorsSelectorProps = {
+		backgroundColor,
+		textColor,
+		setBackgroundColor,
+		setTextColor,
+	};
+
 	return (
 		<Fragment>
 			<BlockControls>
 				<Toolbar>
 					{ navigatorToolbarButton }
 				</Toolbar>
-				<BlockColorsStyleSelector />
+				<BlockColorsStyleSelector { ...colorsSelectorProps } />
 			</BlockControls>
 			{ navigatorModal }
 			<InspectorControls>
