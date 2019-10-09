@@ -47,11 +47,14 @@ function NavigationMenu( {
 			}
 			return pages.map( ( page ) => {
 				return [ 'core/navigation-menu-item',
-					{ label: page.title.rendered, destination: page.permalink_template },
+					{
+						label: page.title.rendered,
+						destination: page.permalink_template,
+						styles: { color: textColor } },
 				];
 			} );
 		},
-		[ pages ]
+		[ pages, textColor ]
 	);
 
 	const colorsSelectorProps = {
