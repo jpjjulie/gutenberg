@@ -1,5 +1,9 @@
 ## Master
 
+### Breaking Changes
+
+- The new `env` family of scripts has been removed [(#17004](https://github.com/WordPress/gutenberg/pull/17004/)), use `@wordpress/env` instead.
+
 ### New Features
 
 - The bundled `webpack` dependency has been updated from requiring `4.8.3` to requiring `^4.41.0` ([#17746](https://github.com/WordPress/gutenberg/pull/17746)).
