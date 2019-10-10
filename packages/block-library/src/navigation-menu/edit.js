@@ -74,6 +74,13 @@ function NavigationMenu( {
 		'--background-color-menu-link': backgroundColor.color,
 	};
 
+	const navigationMenuClasses = classnames(
+		'wp-block-navigation-menu', {
+			'has-text-color': textColor.color ? textColor.color : false,
+			[ textColor.class ]: textColor.color ? textColor.class : false,
+		}
+	);
+
 	return (
 		<Fragment>
 			<BlockControls>
