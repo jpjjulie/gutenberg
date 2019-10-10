@@ -69,10 +69,14 @@ function NavigationMenu( {
 		setTextColor,
 	};
 
-	const navigationMenuStyles = {
-		'--color-menu-link': textColor.color,
-		'--background-color-menu-link': backgroundColor.color,
-	};
+	const navigationMenuStyles = {};
+	if ( textColor.color ) {
+		navigationMenuStyles[ '--color-menu-link' ] = textColor.color;
+	}
+
+	if ( backgroundColor.color ) {
+		navigationMenuStyles[ '--background-color-menu-link' ] = backgroundColor.color;
+	}
 
 	const navigationMenuClasses = classnames(
 		'wp-block-navigation-menu', {
@@ -89,7 +93,7 @@ function NavigationMenu( {
 				<Toolbar>
 					{ navigatorToolbarButton }
 				</Toolbar>
-				<BlockColorsStyleSelector { ...colorsSelectorProps } />
+				<BlockColorsStyleSelector { ...colorsSelectorProps } style={ navigationMenuStyles } />
 			</BlockControls>
 			{ navigatorModal }
 			<InspectorControls>

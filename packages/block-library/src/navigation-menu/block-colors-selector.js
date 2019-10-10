@@ -11,9 +11,12 @@ import { ColorPaletteControl } from '@wordpress/block-editor';
  * @return {*} React Icon component.
  * @constructor
  */
-const ColorSelectorIcon = () =>
+const ColorSelectorIcon = ( { style } ) =>
 	<div className="block-editor-block-colors-selector__icon-container">
-		<div className="colors-selector__state-selection wp-block-navigation-menu-item">
+		<div
+			className="colors-selector__state-selection wp-block-navigation-menu-item"
+			style={ style }
+		>
 			{ __( 'Aa' ) }
 		</div>
 	</div>;
@@ -25,7 +28,7 @@ const ColorSelectorIcon = () =>
  * @param {bool} isOpen True is the color settings dropdown is open. Otherwise, False.
  * @return {*} React toggle button component.
  */
-const renderToggle = ( { onToggle, isOpen } ) => {
+const renderToggle = ( style ) => ( { onToggle, isOpen } ) => {
 	const openOnArrowDown = ( event ) => {
 		if ( ! isOpen && event.keyCode === DOWN ) {
 			event.preventDefault();
@@ -41,7 +44,7 @@ const renderToggle = ( { onToggle, isOpen } ) => {
 				label={ __( 'Open Colors Selector' ) }
 				onClick={ onToggle }
 				onKeyDown={ openOnArrowDown }
-				icon={ <ColorSelectorIcon/> }
+				icon={ <ColorSelectorIcon style={ style }/> }
 			/>
 		</Toolbar>
 	);
@@ -69,11 +72,11 @@ const renderContent = ( { backgroundColor, textColor, setBackgroundColor, setTex
 	)
 } );
 
-export default ( colorControlProps ) =>
+export default ( { style, ...colorControlProps } ) =>
 	<Dropdown
 		position="bottom right"
 		className="editor-block-colors-selector block-editor-block-colors-selector"
 		contentClassName="editor-block-colors-selector__popover block-editor-block-colors-selector__popover"
-		renderToggle={ renderToggle }
+		renderToggle={ renderToggle( style ) }
 		renderContent={ renderContent( colorControlProps ) }
 	/>;

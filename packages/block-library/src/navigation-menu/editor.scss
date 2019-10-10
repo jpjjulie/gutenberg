@@ -20,7 +20,7 @@
 /**
  * Colors Selector component
  */
-$colors-selector-size: 20px;
+$colors-selector-size: 22px;
 .block-editor-block-colors-selector {
 	width: auto;
 
@@ -44,13 +44,14 @@ $colors-selector-size: 20px;
 
 			// colors-selector - selection status.
 			.colors-selector__state-selection {
-				box-shadow: 0 0 1px #000 inset;
 				font-size: 11px;
 				font-style: normal;
 				font-family: inherit;
 				font-weight: 600;
 
 				border-radius: $colors-selector-size / 2;
+				box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+
 				width: $colors-selector-size;
 				min-width: $colors-selector-size;
 				height: $colors-selector-size;
