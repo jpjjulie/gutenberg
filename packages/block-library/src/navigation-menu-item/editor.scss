@@ -28,10 +28,9 @@ $menu-label-field-width: 140px;
 	}
 }
 
-
 .wp-block-navigation-menu-item {
 	font-family: $editor-font;
-	color: #0073af;
+	color: var(--color-menu-link);
 	font-weight: bold;
 	font-size: $text-editor-font-size;
 }

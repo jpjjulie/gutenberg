@@ -64,6 +64,10 @@ function NavigationMenu( {
 		setTextColor,
 	};
 
+	const colorsSelectorStyles = {
+		'--color-menu-link': textColor.color,
+	};
+
 	return (
 		<Fragment>
 			<BlockControls>
@@ -84,7 +88,7 @@ function NavigationMenu( {
 						} }
 						label={ __( 'Automatically add new pages' ) }
 						help={ __( 'Automatically add new top level pages to this menu.' ) }
-					/>
+  					/>
 				</PanelBody>
 			</InspectorControls>
 			<div className="wp-block-navigation-menu">
@@ -92,10 +96,12 @@ function NavigationMenu( {
 					<Spinner />
 				}
 				{ pages &&
-					<InnerBlocks
-						template={ defaultMenuItems ? defaultMenuItems : null }
-						allowedBlocks={ [ 'core/navigation-menu-item' ] }
-					/>
+					<div style={ colorsSelectorStyles}>
+						<InnerBlocks
+							template={ defaultMenuItems ? defaultMenuItems : null }
+							allowedBlocks={ [ 'core/navigation-menu-item' ] }
+						/>
+					</div>
 				}
 			</div>
 		</Fragment>
