@@ -76,8 +76,10 @@ function NavigationMenu( {
 
 	const navigationMenuClasses = classnames(
 		'wp-block-navigation-menu', {
-			'has-text-color': textColor.color ? textColor.color : false,
+			'has-text-color': textColor.color,
+			'has-background-color': backgroundColor.color,
 			[ textColor.class ]: textColor.color ? textColor.class : false,
+			[ backgroundColor.class ]: backgroundColor.color ? backgroundColor.class : false,
 		}
 	);
 
