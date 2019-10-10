@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import { IconButton, Dropdown, Toolbar } from '@wordpress/components';
@@ -72,10 +77,14 @@ const renderContent = ( { backgroundColor, textColor, setBackgroundColor, setTex
 	)
 } );
 
-export default ( { style, ...colorControlProps } ) =>
+export default ( { style, className, ...colorControlProps } ) =>
 	<Dropdown
 		position="bottom right"
-		className="editor-block-colors-selector block-editor-block-colors-selector"
+		className={ classnames(
+			'editor-block-colors-selector,',
+			'block-editor-block-colors-selector',
+			className,
+		) }
 		contentClassName="editor-block-colors-selector__popover block-editor-block-colors-selector__popover"
 		renderToggle={ renderToggle( style ) }
 		renderContent={ renderContent( colorControlProps ) }

@@ -93,7 +93,7 @@ function NavigationMenu( {
 				<Toolbar>
 					{ navigatorToolbarButton }
 				</Toolbar>
-				<BlockColorsStyleSelector { ...colorsSelectorProps } style={ navigationMenuStyles } />
+				<BlockColorsStyleSelector { ...colorsSelectorProps } style={ navigationMenuStyles } className={ navigationMenuClasses } />
 			</BlockControls>
 			{ navigatorModal }
 			<InspectorControls>
